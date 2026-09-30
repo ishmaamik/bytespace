@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import CourseBox from "../common/courseBox";
 import type { ComponentProps } from "react";
 
@@ -14,6 +15,8 @@ type CoursePageProps = {
 	showFilters?: boolean;
 	showCategoryFilters?: boolean;
 	categoryOptions?: string[];
+	showSearch?: boolean;
+	searchTitle?: string;
 	showPagination?: boolean;
 	coursesPerPage?: number;
 };
@@ -25,12 +28,15 @@ export default function CoursePage({
 	showFilters = false,
 	showCategoryFilters = false,
 	categoryOptions,
+	showSearch = false,
+	searchTitle = "Find Your Next Course",
 	showPagination = false,
 	coursesPerPage = 6,
 }: CoursePageProps) {
 	const [level, setLevel] = useState("All levels");
 	const [category, setCategory] = useState("All categories");
 	const [sortBy, setSortBy] = useState("Most relevant");
+	const [searchTerm, setSearchTerm] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const categories = [
@@ -41,6 +47,10 @@ export default function CoursePage({
 	];
 
 	const filteredCourses = courses
+		.filter((course) => {
+			const searchValue = searchTerm.trim().toLowerCase();
+			return !searchValue || [course.title, course.byWhom, course.category].some((value) => value?.toLowerCase().includes(searchValue));
+		})
 		.filter((course) => level === "All levels" || (course.level ?? course.friendly) === level)
 		.filter((course) => category === "All categories" || course.category === category)
 		.sort((firstCourse, secondCourse) => {
@@ -77,65 +87,76 @@ export default function CoursePage({
 	}
 
 	return (
+		<>
+			{showSearch && (
+				<section className="bg-[#003AE2] px-6 py-10 sm:py-14">
+					<div className="mx-auto flex max-w-[720px] flex-col items-center">
+						<h1 className="text-center text-2xl font-semibold text-white sm:text-4xl">{searchTitle}</h1>
+						<div className="relative mt-7 w-full max-w-[460px]">
+							<Image src="/search.svg" alt="" width={20} height={20} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2" />
+							<input
+								aria-label="Search courses"
+								value={searchTerm}
+								onChange={(event) => { setSearchTerm(event.target.value); setCurrentPage(1); }}
+								placeholder="Search courses"
+								className="h-12 w-full rounded-full bg-white pl-12 pr-4 text-sm text-[#222222] outline-none"
+							/>
+						</div>
+					</div>
+				</section>
+			)}
+
 		<section className="w-full bg-white px-4 py-8 sm:px-6 lg:px-8">
 			<div className="mx-auto max-w-[1180px]">
-				{showCategoryFilters && (
-					<div className="mb-8 flex flex-wrap justify-center gap-3">
-						<button
-							type="button"
-							onClick={() => updateCategory("All categories")}
-							className={`rounded-full px-4 py-2 text-sm ${category === "All categories" ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}
-						>
-							Featured
-						</button>
-						{categories.filter((categoryOption) => categoryOption !== "All categories").map((categoryOption) => (
-							<button
-								key={categoryOption}
-								type="button"
-								onClick={() => updateCategory(categoryOption)}
-								className={`rounded-full px-4 py-2 text-sm ${category === categoryOption ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}
-							>
-								{categoryOption}
-							</button>
-						))}
-					</div>
-				)}
-
 				{showFilters && (
-					<div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+					<div className="mb-5 flex flex-wrap items-center justify-between gap-4">
 						<div className="flex flex-wrap gap-3">
+							<button type="button" className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2 text-sm text-[#555555]">
+								<Image src="/filter.png" alt="" width={16} height={16} />
+								Filter
+							</button>
+
 							<label className="sr-only" htmlFor="course-level">Filter by level</label>
-							<select
-								id="course-level"
-								value={level}
-								onChange={(event) => updateLevel(event.target.value)}
-								className="rounded-full border border-[#e3e3e3] bg-white px-4 py-2 text-sm text-[#555555] outline-none"
-							>
-								{allLevels.map((levelOption) => <option key={levelOption}>{levelOption}</option>)}
-							</select>
+							<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
+								<Image src="/level.png" alt="" width={16} height={16} />
+								<select id="course-level" value={level} onChange={(event) => updateLevel(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
+									<option value="All levels">Level</option>
+									{allLevels.filter((levelOption) => levelOption !== "All levels").map((levelOption) => <option key={levelOption}>{levelOption}</option>)}
+								</select>
+							</div>
 
 							<label className="sr-only" htmlFor="course-category">Filter by category</label>
-							<select
-								id="course-category"
-								value={category}
-								onChange={(event) => updateCategory(event.target.value)}
-								className="rounded-full border border-[#e3e3e3] bg-white px-4 py-2 text-sm text-[#555555] outline-none"
-							>
-								{categories.map((categoryOption) => <option key={categoryOption}>{categoryOption}</option>)}
-							</select>
+							<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
+								<Image src="/category.png" alt="" width={16} height={16} />
+								<select id="course-category" value={category} onChange={(event) => updateCategory(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
+									<option value="All categories">Category</option>
+									{categories.filter((categoryOption) => categoryOption !== "All categories").map((categoryOption) => <option key={categoryOption}>{categoryOption}</option>)}
+								</select>
+							</div>
 						</div>
 
 						<label className="sr-only" htmlFor="course-sort">Sort courses</label>
-						<select
-							id="course-sort"
-							value={sortBy}
-							onChange={(event) => updateSort(event.target.value)}
-							className="rounded-full border border-[#e3e3e3] bg-white px-4 py-2 text-sm text-[#555555] outline-none"
-						>
-							<option>Most relevant</option>
-							<option>Price: low to high</option>
-							<option>Rating</option>
-						</select>
+						<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
+							<Image src="/most-relevant.png" alt="" width={16} height={16} />
+							<select id="course-sort" value={sortBy} onChange={(event) => updateSort(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
+								<option>Most relevant</option>
+								<option>Price: low to high</option>
+								<option>Rating</option>
+							</select>
+						</div>
+					</div>
+				)}
+
+				{showCategoryFilters && (
+					<div className="mb-8 flex flex-wrap justify-center gap-3">
+						<button type="button" onClick={() => updateCategory("All categories")} className={`rounded-full px-4 py-2 text-sm ${category === "All categories" ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}>
+							Featured
+						</button>
+						{categories.filter((categoryOption) => categoryOption !== "All categories").map((categoryOption) => (
+							<button key={categoryOption} type="button" onClick={() => updateCategory(categoryOption)} className={`rounded-full px-4 py-2 text-sm ${category === categoryOption ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}>
+								{categoryOption}
+							</button>
+						))}
 					</div>
 				)}
 
@@ -181,5 +202,6 @@ export default function CoursePage({
 				)}
 			</div>
 		</section>
+		</>
 	);
 }
