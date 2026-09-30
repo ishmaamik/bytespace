@@ -1,8 +1,8 @@
 
-import CoursePage from "../../components/coursePage";
-import { courseDetails } from "../../common/courseDetails";
-import { categories } from "../../common/courseCategories"
-import LearningBox from "../../components/learningBox";
+import CoursePage from "../../../components/coursePage";
+import { courseDetails } from "../../../common/courseDetails";
+import { categories } from "../../../common/courseCategories"
+import LearningBox from "../../../components/learningBox";
 
 export default function SecondBox() {
     return (
@@ -33,7 +33,7 @@ export default function SecondBox() {
 
                 <h2 className="max-w-6xl text-center font-normal leading-relaxed text-[#82868E] sm:text-lg">
                     At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various <br />
-                    fields, ensuring there's something for everyone. Unleash your potential and explore our carefully curated categories.
+                    fields, ensuring there&apos;s something for everyone. Unleash your potential and explore our carefully curated categories.
                 </h2>
             </div>
 
