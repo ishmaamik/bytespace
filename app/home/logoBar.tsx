@@ -1,4 +1,4 @@
-import LogoIpsum from "../../components/logoipsum";
+import ImageTextBox from "../../common/imageTextBox";
 
 const logos = [
 	{ imageSrc: "/logo1.png", imageLogo:"/logoipsum.png", imageAlt: "Logo 1", text: "Logo 1" },
@@ -13,7 +13,7 @@ export default function LogoBar() {
 		<section className="flex w-full justify-center overflow-x-auto bg-[#F5F5F6] px-6 py-10">
 			<div className="mx-auto flex min-w-max items-center justify-center gap-[72px]">
 				{logos.map((logo) => (
-					<LogoIpsum key={logo.imageSrc} {...logo} />
+					<ImageTextBox key={logo.imageSrc} {...logo} />
 				))}
 			</div>
 		</section>

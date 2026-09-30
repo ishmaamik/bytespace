@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CourseBox from "./courseBox";
+import CourseBox from "../common/courseBox";
 import type { ComponentProps } from "react";
 
 type Course = ComponentProps<typeof CourseBox> & {
@@ -12,6 +12,8 @@ type Course = ComponentProps<typeof CourseBox> & {
 type CoursePageProps = {
 	courses: Course[];
 	showFilters?: boolean;
+	showCategoryFilters?: boolean;
+	categoryOptions?: string[];
 	showPagination?: boolean;
 	coursesPerPage?: number;
 };
@@ -21,6 +23,8 @@ const allLevels = ["All levels", "Beginner", "Intermediate", "Advanced"];
 export default function CoursePage({
 	courses,
 	showFilters = false,
+	showCategoryFilters = false,
+	categoryOptions,
 	showPagination = false,
 	coursesPerPage = 6,
 }: CoursePageProps) {
@@ -31,13 +35,13 @@ export default function CoursePage({
 
 	const categories = [
 		"All categories",
-		...Array.from(
+		...(categoryOptions ?? Array.from(
 			new Set(courses.map((course) => course.category).filter(Boolean) as string[]),
-		),
+		)),
 	];
 
 	const filteredCourses = courses
-		.filter((course) => level === "All levels" || course.level === level)
+		.filter((course) => level === "All levels" || (course.level ?? course.friendly) === level)
 		.filter((course) => category === "All categories" || course.category === category)
 		.sort((firstCourse, secondCourse) => {
 			if (sortBy === "Price: low to high") {
@@ -75,6 +79,28 @@ export default function CoursePage({
 	return (
 		<section className="w-full bg-white px-4 py-8 sm:px-6 lg:px-8">
 			<div className="mx-auto max-w-[1180px]">
+				{showCategoryFilters && (
+					<div className="mb-8 flex flex-wrap justify-center gap-3">
+						<button
+							type="button"
+							onClick={() => updateCategory("All categories")}
+							className={`rounded-full px-4 py-2 text-sm ${category === "All categories" ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}
+						>
+							Featured
+						</button>
+						{categories.filter((categoryOption) => categoryOption !== "All categories").map((categoryOption) => (
+							<button
+								key={categoryOption}
+								type="button"
+								onClick={() => updateCategory(categoryOption)}
+								className={`rounded-full px-4 py-2 text-sm ${category === categoryOption ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}
+							>
+								{categoryOption}
+							</button>
+						))}
+					</div>
+				)}
+
 				{showFilters && (
 					<div className="mb-8 flex flex-wrap items-center justify-between gap-4">
 						<div className="flex flex-wrap gap-3">
