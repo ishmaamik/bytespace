@@ -4,6 +4,7 @@ import LogoPage from "../../components/logoPage";
 import SecondBox from "./components/secondBox";
 import ThirdBox from "./components/thirdBox";
 import FourthBox from "./components/fourthBox";
+import FifthBox from "./components/fifthBox";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <SecondBox />
       <ThirdBox />
       <FourthBox />
+      <FifthBox />
     </div>
   );
 }
