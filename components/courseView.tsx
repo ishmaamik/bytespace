@@ -65,7 +65,7 @@ export default function CourseView({ course }: CourseViewProps) {
 
                     <div className="relative mt-4 grid items-start gap-8 lg:grid-cols-[1.35fr_0.65fr]">
                         <div className="relative overflow-hidden rounded-2xl bg-white/10 ">
-                            <Image src="/courseVIew/coursegirl.svg" alt="Course preview" width={700} height={379} className=" w-full" priority />
+                            <Image src="/course/coursegirl.svg" alt="Course preview" width={700} height={379} className=" w-full" priority />
                             <button type="button" aria-label="Play course preview" className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#003AE2] ">
                                 ▶
                             </button>
@@ -91,14 +91,14 @@ export default function CourseView({ course }: CourseViewProps) {
                             <ul className="mt-4 space-y-3 text-xs text-[#777777]">
                                 {["Learning Resources", "Quality Lesson Videos", "Certificate of Completion", "Private Consultation"].map((feature) => (
                                     <li key={feature} className="flex items-center gap-2">
-                                        <Image src="/courseVIew/bluetick.png" alt="" width={16} height={16} />
+                                        <Image src="/icons/bluetick.png" alt="" width={16} height={16} />
                                         {feature}
                                     </li>
                                 ))}
                             </ul>
 
                             <div className="mt-5 flex items-center gap-3 border-t border-[#eeeeee] pt-5">
-                                <Image src="/courseVIew/reviewer1.svg" alt="Course creator" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+                                <Image src="/reviewers/reviewer1.svg" alt="Course creator" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
                                 <div>
                                     <p className="text-sm font-semibold">{course.byWhom}</p>
                                     <p className="text-xs text-[#777777]">Professional Creator</p>
@@ -137,7 +137,7 @@ export default function CourseView({ course }: CourseViewProps) {
                             <div>
                                 <h2 className="text-2xl font-semibold text-[#111827]">Sneak Peek</h2>
                                 <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                                    {sneakPeeks.map((peek) => <Image key={peek} src={`/courseVIew/sneakpeak${peek}.svg`} alt={`Course sneak peek ${peek}`} width={280} height={160} className="h-auto w-full rounded-xl border border-[#e5e7eb]" />)}
+                                    {sneakPeeks.map((peek) => <Image key={peek} src={`/sneak-peek/sneakpeak${peek}.svg`} alt={`Course sneak peek ${peek}`} width={280} height={160} className="h-auto w-full rounded-xl border border-[#e5e7eb]" />)}
                                 </div>
                             </div>
                             <div>
@@ -145,7 +145,7 @@ export default function CourseView({ course }: CourseViewProps) {
                                 <ul className="mt-5 grid max-w-3xl gap-4 text-sm text-[#6f7682]">
                                     {(course.keyPoints ?? []).map((point) => (
                                         <li key={point} className="flex items-center gap-3">
-                                            <Image src="/courseVIew/bluetick.png" alt="" width={20} height={20} />
+                                            <Image src="/icons/bluetick.png" alt="" width={20} height={20} />
                                             <span>{point}</span>
                                         </li>
                                     ))}
@@ -191,7 +191,7 @@ export default function CourseView({ course }: CourseViewProps) {
                                     {ratingDistribution.map(({ rating, count, width }) => (
                                         <div key={rating} className="flex items-center gap-4">
                                             <div className="h-2 flex-1 rounded-full bg-[#e5e7eb]"><div className={`h-2 rounded-full bg-[#c8ff16] ${width}`} /></div>
-                                            <Image src={`/courseVIew/${rating}-star.svg`} alt={`${rating} stars`} width={104} height={20} className="h-5 w-[104px]" />
+                                            <Image src={`/rating/${rating}-star.svg`} alt={`${rating} stars`} width={104} height={20} className="h-5 w-[104px]" />
                                             <span className="w-8 text-right text-sm text-[#6f7682]">{count}</span>
                                         </div>
                                     ))}
@@ -203,7 +203,7 @@ export default function CourseView({ course }: CourseViewProps) {
                                 <button type="button" onClick={() => setReviewFilter(null)} className={`rounded-full px-4 py-2 text-sm ${reviewFilter === null ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}>All rating</button>
                                 {[5, 4, 3, 2, 1].map((rating) => (
                                     <button key={rating} type="button" onClick={() => setReviewFilter(rating)} className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm ${reviewFilter === rating ? "bg-[#c8ff16] text-[#222222]" : "bg-[#f5f5f6] text-[#555555]"}`}>
-                                        <Image src={`/courseVIew/1-star.svg`} alt="" width={20} height={20} className="h-4 w-4 object-contain" /> {rating}
+                                        <Image src={`/rating/1-star.svg`} alt="" width={20} height={20} className="h-4 w-4 object-contain" /> {rating}
                                     </button>
                                 ))}
                             </div>
@@ -212,11 +212,11 @@ export default function CourseView({ course }: CourseViewProps) {
                                 {reviewDetails.filter((review) => reviewFilter === null || review.rating === reviewFilter).map((review) => (
                                     <article key={review.name} className="rounded-2xl border border-[#d7dce2] p-8">
                                         <div className="flex items-start gap-3">
-                                            <Image src={`/courseVIew/reviewer${review.reviewer}.svg`} alt={review.name} width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+                                            <Image src={`/reviewers/reviewer${review.reviewer}.svg`} alt={review.name} width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
                                             <div><p className="text-sm font-semibold text-[#222222]">{review.name}</p><p className="text-sm text-[#6f7682]">{review.role}</p></div>
                                             <span className="ml-auto text-sm text-[#6f7682]">{review.date}</span>
                                         </div>
-                                        <Image src={`/courseVIew/${review.rating}-star.svg`} alt={`${review.rating} star rating`} width={104} height={20} className="mt-7 h-5 w-[104px]" />
+                                        <Image src={`/rating/${review.rating}-star.svg`} alt={`${review.rating} star rating`} width={104} height={20} className="mt-7 h-5 w-[104px]" />
                                         <p className="mt-6 text-sm leading-6 text-[#6f7682]">&quot;{review.text}&quot;</p>
                                     </article>
                                 ))}
