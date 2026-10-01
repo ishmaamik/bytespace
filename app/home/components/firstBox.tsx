@@ -70,7 +70,7 @@ export default function FirstBox() {
         <div className="relative w-full max-w-[461px]">
           <Image
             className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2"
-            src="/search.svg"
+            src="/icons/search.svg"
             alt=""
             width={24}
             height={24}

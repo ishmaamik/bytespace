@@ -24,3 +24,44 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes course-grid-exit-left {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-80px); }
+}
+
+@keyframes course-grid-exit-right {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(80px); }
+}
+
+@keyframes course-grid-enter-right {
+  from { opacity: 0; transform: translateX(80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes course-grid-enter-left {
+  from { opacity: 0; transform: translateX(-80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.course-page-exit-left,
+.course-page-exit-right,
+.course-page-enter-left,
+.course-page-enter-right {
+  will-change: opacity, transform;
+}
+
+.course-page-exit-left { animation: course-grid-exit-left 300ms ease-in forwards; }
+.course-page-exit-right { animation: course-grid-exit-right 300ms ease-in forwards; }
+.course-page-enter-right { animation: course-grid-enter-right 360ms ease-out forwards; }
+.course-page-enter-left { animation: course-grid-enter-left 360ms ease-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .course-page-exit-left,
+  .course-page-exit-right,
+  .course-page-enter-left,
+  .course-page-enter-right {
+    animation: none;
+  }
+}

@@ -38,6 +38,7 @@ export default function CoursePage({
 	const [sortBy, setSortBy] = useState("Most relevant");
 	const [searchTerm, setSearchTerm] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
+	const [pageTransition, setPageTransition] = useState<"idle" | "exit-left" | "exit-right" | "enter-left" | "enter-right">("idle");
 
 	const categories = [
 		"All categories",
@@ -86,6 +87,19 @@ export default function CoursePage({
 		setCurrentPage(1);
 	}
 
+	function changePage(nextPage: number) {
+		if (nextPage === safePage || pageTransition !== "idle") return;
+
+		const enteringFrom = nextPage > safePage ? "right" : "left";
+		setPageTransition(nextPage > safePage ? "exit-left" : "exit-right");
+
+		window.setTimeout(() => {
+			setCurrentPage(nextPage);
+			setPageTransition(`enter-${enteringFrom}`);
+			window.setTimeout(() => setPageTransition("idle"), 360);
+		}, 300);
+	}
+
 	return (
 		<>
 			{showSearch && (
@@ -93,7 +107,7 @@ export default function CoursePage({
 					<div className="mx-auto flex max-w-[720px] flex-col items-center">
 						<h1 className="text-center text-2xl font-semibold text-white sm:text-4xl">{searchTitle}</h1>
 						<div className="relative mt-7 w-full max-w-[460px]">
-							<Image src="/search.svg" alt="" width={20} height={20} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2" />
+							<Image src="/icons/search.svg" alt="" width={20} height={20} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2" />
 							<input
 								aria-label="Search courses"
 								value={searchTerm}
@@ -160,7 +174,7 @@ export default function CoursePage({
 					</div>
 				)}
 
-				<div className="grid grid-cols-1 justify-items-center gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+				<div className={`course-page-grid grid grid-cols-1 justify-items-center gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 ${pageTransition !== "idle" ? `course-page-${pageTransition}` : ""}`}>
 					{visibleCourses.map((course) => (
 						<CourseBox key={`${course.title}-${course.imageSrc}`} {...course} />
 					))}
@@ -172,7 +186,7 @@ export default function CoursePage({
 							type="button"
 							aria-label="Previous page"
 							disabled={safePage === 1}
-							onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+							onClick={() => changePage(Math.max(1, safePage - 1))}
 							className="h-8 w-8 rounded-full border border-[#e3e3e3] text-[#555555] disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							&lt;
@@ -183,7 +197,7 @@ export default function CoursePage({
 								type="button"
 								aria-label={`Page ${page}`}
 								aria-current={safePage === page ? "page" : undefined}
-								onClick={() => setCurrentPage(page)}
+								onClick={() => changePage(page)}
 								className={`h-8 min-w-8 rounded-full px-2 text-sm ${safePage === page ? "bg-[#0757df] text-white" : "text-[#555555]"}`}
 							>
 								{page}
@@ -193,7 +207,7 @@ export default function CoursePage({
 							type="button"
 							aria-label="Next page"
 							disabled={safePage === pageCount}
-							onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}
+							onClick={() => changePage(Math.min(pageCount, safePage + 1))}
 							className="h-8 w-8 rounded-full border border-[#e3e3e3] text-[#555555] disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							&gt;
