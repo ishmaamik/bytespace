@@ -1,5 +1,5 @@
 "use client";
-
+import "../app/home/home.css"
 import Image from "next/image";
 
 type AuthCardProps = {
@@ -10,7 +10,7 @@ export default function AuthCard({ mode }: AuthCardProps) {
   const isRegister = mode === "register";
 
   return (
-    <div className="flex min-h-[784px] w-full max-w-[579px] flex-col rounded-[18px] bg-white px-8 py-12 shadow-[0_20px_50px_rgba(0,0,0,0.14)] sm:px-14 sm:py-16">
+    <div className="auth-right flex min-h-[784px] w-full max-w-[579px] flex-col rounded-[18px] bg-white px-8 py-12 shadow-[0_20px_50px_rgba(0,0,0,0.14)] sm:px-14 sm:py-16">
       <p className="text-sm text-[#0757df]">{isRegister ? "Create an Account" : "Sign In"}</p>
       <h1 className="mt-2 text-4xl font-semibold leading-tight text-[#222222] sm:text-5xl">
         {isRegister ? "Welcome to ByteSpace" : "Welcome Back"}

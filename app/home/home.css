@@ -34,6 +34,12 @@
 	}
 }
 
+.hero-card {
+	opacity: 0;
+	animation: hero-slide-in-left 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: opacity, transform;
+}
+
 .hero-left {
 	opacity: 0;
 	animation: hero-slide-in-left 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -62,6 +68,18 @@
 	will-change: opacity, transform;
 }
 
+.auth-right {
+	opacity: 0;
+	animation: hero-slide-in-right 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: opacity, transform;
+}
+
+.auth-left {
+	opacity: 0;
+	animation: hero-slide-in-left 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: opacity, transform;
+}
+
 .hero-right-delay-1 {
 	animation-delay: 120ms;
 }
@@ -87,6 +105,12 @@
 .hero-bottom-man {
 	opacity: 0;
 	animation: hero-bottom-slide-in 2s cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards;
+	will-change: opacity, transform;
+}
+
+.hero-bottom-cards {
+	opacity: 0;
+	animation: hero-bottom-slide-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards;
 	will-change: opacity, transform;
 }
 

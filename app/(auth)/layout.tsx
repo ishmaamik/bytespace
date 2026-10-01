@@ -1,5 +1,5 @@
 "use client";
-
+import "../home/home.css"
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -9,7 +9,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   return (
     <main className="min-h-screen bg-[#003AE2] px-6 py-8 sm:px-10 sm:py-12">
       <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-[1180px] items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-20">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center  auth-left">
           <div className="mx-auto mb-16 max-w-[552px] text-white -mt-16">
             <h2 className="text-lg font-semibold sm:text-xl ">
               {isRegister ? "Sign up and come in" : "Sign in with ease"}

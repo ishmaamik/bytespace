@@ -26,7 +26,7 @@ export default function FifthBox() {
     <section className="relative isolate overflow-hidden bg-[#f8fbff]">
       <Image src="/TestimonialBg.png" alt="" fill className="pointer-events-none -z-10 object-cover object-center" />
 
-      <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+      <div className="hero-card mx-auto max-w-[1280px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
         <div className="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <h2 className="max-w-[520px] text-4xl font-semibold leading-[1.08] text-[#111827] sm:text-5xl">
             Discover What Our Community Is Saying
@@ -36,7 +36,7 @@ export default function FifthBox() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="hero-bottom-cards mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.name} {...testimonial} />
           ))}
