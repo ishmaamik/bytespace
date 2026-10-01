@@ -2,7 +2,59 @@ import Image from "next/image"
 
 export default function FirstBox() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#003AE2]">
+    <section className="relative overflow-hidden bg-[#003AE2]">
+      <div className="z-0 relative mx-auto h-full w-full max-w-[1440px] sm:h-[560px] lg:h-full">
+
+        <Image
+          className="pointer-events-none absolute top-[477px] left-[233px] hidden w-[175px] lg:block xl:w-[175px]"
+          src="/home/left-white.svg"
+          alt=""
+          width={175}
+          height={175}
+        />
+        <Image
+          className="pointer-events-none absolute left-0 top-[221px] hidden w-[180px] lg:block xl:w-[385px]"
+          src="/home/left-green.png"
+          alt=""
+          width={385}
+          height={385}
+        />
+        <Image
+          className="pointer-events-none absolute right-[146px] top-[464px] hidden w-[150px] lg:block xl:w-[188px]"
+          src="/home/right-white.svg"
+          alt=""
+          width={188}
+          height={188}
+        />
+        <Image
+          className="pointer-events-none absolute -right-30 top-[221px] hidden w-full lg:block xl:w-[370px]"
+          src="/home/right-greeny.png"
+          alt=""
+          width={370}
+          height={370}
+        />
+        <Image
+          className="pointer-events-none absolute top-[642px] z-10 left-[18px] hidden w-[250px] lg:block xl:w-[342px]"
+          src="/home/bottomleft-white.svg"
+          alt=""
+          width={342}
+          height={342}
+        />
+        <Image
+          className="pointer-events-none absolute top-[603px] -right-[17px] hidden w-[260px] lg:block xl:w-[330px]"
+          src="/home/bottomright-white.svg"
+          alt=""
+          width={330}
+          height={330}
+        />
+        <Image
+          className="pointer-events-none absolute top-[582px] left-1/2 w-[1149px] h-[1149px] -translate-x-1/2"
+          src="/home/bottom-green.png"
+          alt=""
+          width={1149}
+          height={442}
+        />
+      </div>
 
       <div className="relative z-10 flex justify-center px-6 pt-12 sm:pt-16">
         <h1 className="text-center text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -30,15 +82,16 @@ export default function FirstBox() {
         </div>
       </div>
 
-      <div className="relative z-0 lg:-mt-100 mt-8">
+      <div className="relative z-10 flex justify-center pt-4">
         <Image
-          className="h-auto w-full"
-          src="/art.png"
+          src="/home/man-bg.svg"
           alt=""
-          width={1719}
-          height={1510}
+          width={722}
+          height={515}
+          className="h-auto w-[min(722px,92vw)]"
         />
       </div>
+
     </section>
   );
 }
