@@ -65,7 +65,7 @@ export default function CourseBox({
 
                 <div className="flex items-center justify-between pt-4">
                     <div className="flex items-center gap-2 rounded-full bg-[#f7f7f8] px-3 py-2 text-xs text-[#555555]">
-                        <Image src="/signal.png" alt="" width={18} height={18} />
+                        <Image src="/icons/signal.png" alt="" width={18} height={18} />
                         <span>{friendly}</span>
                     </div>
 

@@ -31,7 +31,7 @@ export default function Footer() {
     <footer className="border-t border-[#e5e7eb] bg-white text-[#222222]">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-6 py-12 sm:px-10 lg:grid-cols-[1.25fr_1fr] lg:px-16 lg:py-16">
         <div className="max-w-[390px]">
-          <Image src="/byteblack.png" alt="ByteSpace" width={171} height={37} className="h-auto w-[140px]" />
+          <Image src="/icons/byteblack.png" alt="ByteSpace" width={171} height={37} className="h-auto w-[140px]" />
           <p className="mt-5 text-xs leading-5 text-[#4b4b4b]">
             Stay up to date with our latest features and releases by joining our newsletter.
           </p>

@@ -55,7 +55,7 @@ export default function FifthBox() {
         isVisible ? "animate-fifth-box" : ""
       }`}
     >
-      <Image src="/TestimonialBg.png" alt="" fill className="pointer-events-none -z-10 object-cover object-center" />
+      <Image src="/testimonials/TestimonialBg.png" alt="" fill className="pointer-events-none -z-10 object-cover object-center" />
 
       <div className="hero-card mx-auto max-w-[1280px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
         <div className="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16" data-tutorial="community-stories">

@@ -143,13 +143,13 @@ export default function CoursePage({
 					<div className="mb-5 flex flex-wrap items-center justify-between gap-4" data-tutorial="course-filters">
 						<div className="flex flex-wrap gap-3">
 							<button type="button" className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2 text-sm text-[#555555]">
-								<Image src="/filter.png" alt="" width={16} height={16} />
+								<Image src="/icons/filter.png" alt="" width={16} height={16} />
 								Filter
 							</button>
 
 							<label className="sr-only" htmlFor="course-level">Filter by level</label>
 							<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
-								<Image src="/level.png" alt="" width={16} height={16} />
+								<Image src="/icons/level.png" alt="" width={16} height={16} />
 								<select id="course-level" value={level} onChange={(event) => updateLevel(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
 									<option value="All levels">Level</option>
 									{allLevels.filter((levelOption) => levelOption !== "All levels").map((levelOption) => <option key={levelOption}>{levelOption}</option>)}
@@ -158,7 +158,7 @@ export default function CoursePage({
 
 							<label className="sr-only" htmlFor="course-category">Filter by category</label>
 							<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
-								<Image src="/category.png" alt="" width={16} height={16} />
+								<Image src="/icons/category.png" alt="" width={16} height={16} />
 								<select id="course-category" value={category} onChange={(event) => updateCategory(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
 									<option value="All categories">Category</option>
 									{categories.filter((categoryOption) => categoryOption !== "All categories").map((categoryOption) => <option key={categoryOption}>{categoryOption}</option>)}
@@ -168,7 +168,7 @@ export default function CoursePage({
 
 						<label className="sr-only" htmlFor="course-sort">Sort courses</label>
 						<div className="flex items-center gap-2 rounded-full border border-[#e3e3e3] bg-white px-4 py-2">
-							<Image src="/most-relevant.png" alt="" width={16} height={16} />
+							<Image src="/icons/most-relevant.png" alt="" width={16} height={16} />
 							<select id="course-sort" value={sortBy} onChange={(event) => updateSort(event.target.value)} className="bg-transparent text-sm text-[#555555] outline-none">
 								<option>Most relevant</option>
 								<option>Price: low to high</option>

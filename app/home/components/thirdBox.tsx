@@ -30,20 +30,20 @@ export default function ThirdBox() {
           </div>
 
           <div className="relative min-h-[390px] sm:min-h-[510px] ">
-            <Image src="/Professional1.png" alt="Professional learning" width={577} height={540} className="absolute top-3 right-0 z-10 h-auto " />
-            <Image src="/Professional2.png" alt="Learning progress" width={232} height={138} className="absolute right-10 top-[155px] z-20 " />
-            <Image src="/Professional3.png" alt="Decorative accent" width={217} height={216} className="lg:flex hidden absolute left-130 top-5 z-30 " />
-            <Image src="/Professional4.png" alt="Course Box" width={343} height={144} className="absolute lg:left-[120px] left-[10px]  z-5 " />
+            <Image src="/thirdBox/Professional1.png" alt="Professional learning" width={577} height={540} className="absolute top-3 right-0 z-10 h-auto " />
+            <Image src="/thirdBox/Professional2.png" alt="Learning progress" width={232} height={138} className="absolute right-10 top-[155px] z-20 " />
+            <Image src="/thirdBox/Professional3.png" alt="Decorative accent" width={217} height={216} className="lg:flex hidden absolute left-130 top-5 z-30 " />
+            <Image src="/thirdBox/Professional4.png" alt="Course Box" width={343} height={144} className="absolute lg:left-[120px] left-[10px]  z-5 " />
 
           </div>
         </div>
 
         <div className="mt-16 grid sm:justify-center   gap-12 lg:mt-8 lg:left-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           <div className="relative min-h-[420px]  sm:min-h-[560px] sm:text-center sm:justify-center sm:items-center">
-            <Image src="/customercare1.png" alt="Customer support professional" width={579} height={719} className="absolute bottom-0   left-1/2 z-10 h-auto w-[min(75vw,540px)] -translate-x-1/2" />
-            <Image src="/customercare2.png" alt="Revenue dashboard" width={232} height={119} className="absolute lg:left-0 left-1 -top-15 z-5 w-[min(34vw,232px)]" />
-            <Image src="/customercare3.png" alt="Happy students" width={134} height={135} className="absolute top-[100px]  lg:left-0 left-90 z-7 w-[min(24vw,134px)]" />
-            <Image src="/customercare4.png" alt="Growth accent" width={217} height={216} className="lg:flex hidden absolute top-0 right-[100px] z-12 w-[min(25vw,217px)]" />
+            <Image src="/thirdBox/customercare1.png" alt="Customer support professional" width={579} height={719} className="absolute bottom-0   left-1/2 z-10 h-auto w-[min(75vw,540px)] -translate-x-1/2" />
+            <Image src="/thirdBox/customercare2.png" alt="Revenue dashboard" width={232} height={119} className="absolute lg:left-0 left-1 -top-15 z-5 w-[min(34vw,232px)]" />
+            <Image src="/thirdBox/customercare3.png" alt="Happy students" width={134} height={135} className="absolute top-[100px]  lg:left-0 left-90 z-7 w-[min(24vw,134px)]" />
+            <Image src="/thirdBox/customercare4.png" alt="Growth accent" width={217} height={216} className="lg:flex hidden absolute top-0 right-[100px] z-12 w-[min(25vw,217px)]" />
           </div>
 
           <div className="max-w-[520px] lg:pb-16 sm: lg:text-left text-center" data-tutorial="creator-tools">
@@ -55,7 +55,7 @@ export default function ThirdBox() {
                   key={benefit}
                   className="flex justify-center gap-3 text-sm text-[#222222] sm:text-base lg:justify-start"
                 >
-                  <Image src="/bluetick.png" alt="" width={24} height={24} />
+                  <Image src="/icons/bluetick.png" alt="" width={24} height={24} />
                   <span>{benefit}</span>
                 </div>
               ))}
