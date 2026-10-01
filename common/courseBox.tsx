@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type CourseProps = {
+    id: string;
     imageSrc: string;
     title: string;
     byWhom: string;
@@ -15,6 +17,7 @@ type CourseProps = {
 };
 
 export default function CourseBox({
+    id,
     imageSrc,
     title,
     byWhom,
@@ -83,7 +86,12 @@ export default function CourseBox({
                     </div>
                 </div>
 
-                <p className="pt-4 text-[20px] font-semibold text-[#0757df]">{price}<span className="ml-1 text-xs font-normal text-[#777777]">/lifetime</span></p>
+                <div className="flex items-end justify-between gap-3 pt-4">
+                    <p className="text-[20px] font-semibold text-[#0757df]">{price}<span className="ml-1 text-xs font-normal text-[#777777]">/lifetime</span></p>
+                    <Link href={`/course/${id}`} className="rounded-full bg-[#c8ff16] px-3 py-2 text-xs font-medium text-[#111827] transition-transform hover:scale-105">
+                        View Course
+                    </Link>
+                </div>
             </div>
         </article>
     );
