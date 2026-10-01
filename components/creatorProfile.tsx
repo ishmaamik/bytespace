@@ -4,7 +4,19 @@ import { courseDetails } from "../common/courseDetails";
 import { categories } from "../common/courseCategories";
 import type { Creator } from "../common/creatorDetails";
 
+function normalizeCreatorName(name: string) {
+  return name.toLowerCase().replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
 export default function CreatorProfile({ creator }: { creator: Creator }) {
+  const creatorCourses = courseDetails.filter(
+    (course) => {
+      const courseCreator = normalizeCreatorName(course.byWhom);
+      return courseCreator === normalizeCreatorName(creator.name)
+        || courseCreator === normalizeCreatorName(creator.id);
+    },
+  );
+
   return (
     <main>
       <section className="bg-[#003AE2] px-6 py-8 text-white sm:px-10 sm:py-12 lg:px-16">
@@ -27,7 +39,7 @@ export default function CreatorProfile({ creator }: { creator: Creator }) {
         </div>
       </section>
 
-      <CoursePage courses={courseDetails} showCategoryFilters categoryOptions={categories} showPagination coursesPerPage={6} />
+      <CoursePage courses={creatorCourses} showCategoryFilters categoryOptions={categories} showPagination coursesPerPage={6} />
     </main>
   );
 }
