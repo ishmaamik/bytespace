@@ -23,7 +23,7 @@ export default function SiteHeader() {
         <nav className="flex gap-5 sm:gap-8" aria-label="Main navigation">
           <Link href="/home" className="text-white">Home</Link>
           <Link href="/course" className="text-white">Courses</Link>
-          <Link href="/profile" className="text-white">Creators</Link>
+          <Link href="/creators" className="text-white">Creators</Link>
         </nav>
 
         <div className="flex items-center gap-5 sm:gap-8">
