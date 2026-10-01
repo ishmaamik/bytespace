@@ -1,6 +1,6 @@
 import "./home.css";
 import FirstBox from "./components/firstBox";
-import LogoPage from "../../components/logoPage";
+import LogoPage from "./components/logoPage";
 import SecondBox from "./components/secondBox";
 import ThirdBox from "./components/thirdBox";
 import FourthBox from "./components/fourthBox";

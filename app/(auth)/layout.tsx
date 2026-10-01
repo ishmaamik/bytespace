@@ -3,6 +3,7 @@
 import "../home/home.css";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { authLayoutText } from "../../components/text-files/authLayout";
 
 export default function AuthLayout({
   children,
@@ -19,19 +20,17 @@ export default function AuthLayout({
         <div className="auth-left hidden lg:flex lg:flex-col lg:justify-center">
           <div className="mx-auto mb-16 -mt-16 max-w-[552px] text-white">
             <h2 className="text-lg font-semibold sm:text-xl">
-              {isRegister ? "Sign up and come in" : "Sign in with ease"}
+              {isRegister ? authLayoutText.registerHeading : authLayoutText.loginHeading}
             </h2>
 
             <p className="mt-2 max-w-[500px] text-xs leading-5 text-white/90 sm:text-sm">
-              {isRegister
-                ? "The registration process is straightforward, uncomplicated, and efficient, allowing users to sign up quickly, easily, and at no cost."
-                : "Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge."}
+              {isRegister ? authLayoutText.registerDescription : authLayoutText.loginDescription}
             </p>
           </div>
 
           <Image
             src="/LoginDesign.svg"
-            alt="ByteSpace learning platform"
+            alt={authLayoutText.imageAlt}
             width={552}
             height={585}
             className="h-auto w-full max-w-[552px]"

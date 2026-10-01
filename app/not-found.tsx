@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFoundText } from "../components/text-files/notFound";
 
 export default function NotFound() {
   return (
@@ -9,21 +10,21 @@ export default function NotFound() {
       <div className="relative z-10 flex max-w-5xl flex-col items-center">
         <Image
           src="/404.svg"
-          alt="404"
+          alt={notFoundText.imageAlt}
           width={896}
           height={357}
           className="h-auto w-full max-w-[896px]"
           priority
         />
         <h1 className="-mt-12 text-3xl font-semibold leading-tight text-white sm:text-5xl">
-          The page you are looking for <br/>
-          doesn&apos;t exist
+          {notFoundText.heading[0]} <br/>
+          {notFoundText.heading[1]}
         </h1>
         <p className="mt-5 max-w-md text-sm text-white/80">
-          The page may have been moved, deleted, or the address may be incorrect.
+          {notFoundText.description}
         </p>
         <Link href="/home" className="mt-8 rounded-full bg-[#c8ff16] px-6 py-3 text-sm font-medium text-[#111827] transition-transform hover:scale-105">
-          Back to Home
+          {notFoundText.homeLink}
         </Link>
       </div>
     </main>

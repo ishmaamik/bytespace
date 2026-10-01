@@ -1,5 +1,6 @@
 import "../home.css";
 import Image from "next/image";
+import { hero } from "../text-files/firstBox";
 
 export default function FirstBox() {
   return (
@@ -59,12 +60,12 @@ export default function FirstBox() {
 
       <div className="relative z-10 flex justify-center px-6 pt-12 lg:pt-12">
         <h1 data-tutorial="home-heading" className="text-center text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Get Access to Hundreds<br />
-          Courses Available
+          {hero.heading[0]}<br />
+          {hero.heading[1]}
         </h1>
       </div>
 
-      <p className="relative z-10 mx-auto max-w-2xl px-6 pt-8 text-center text-sm text-white sm:text-base">Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.</p>
+      <p className="relative z-10 mx-auto max-w-2xl px-6 pt-8 text-center text-sm text-white sm:text-base">{hero.subheading}</p>
 
       <div className="relative z-10 flex justify-center px-6 pt-12 sm:pt-16">
         <div className="relative w-full max-w-[461px]" data-tutorial="home-search">
@@ -77,7 +78,7 @@ export default function FirstBox() {
           />
           <input
             type="text"
-            placeholder="Course, topic, creators"
+            placeholder={hero.searchPlaceholder}
             className="h-[52px] w-full rounded-[50px] bg-white pl-12 pr-4 text-black"
           />
         </div>

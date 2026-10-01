@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
+import { tutorialGuideText } from "./text-files/tutorialGuide";
 
 type TutorialStep = {
   target: string;
@@ -26,162 +27,34 @@ type Consent = "loading" | "unanswered" | "accepted" | "declined";
 const consentStorageKey = "bytespace-tutorial-consent";
 const completedStorageKey = "bytespace-completed-tutorials";
 
+function createTutorial(id: string, targets: string[], steps: { title: string; description: string }[]): Tutorial {
+  return {
+    id,
+    steps: targets.map((target, index) => ({ target, ...steps[index] })),
+  };
+}
+
 const tutorials: Record<string, Tutorial> = {
-  home: {
-    id: "home",
-    steps: [
-      {
-        target: "home-heading",
-        title: "Welcome to ByteSpace",
-        description: "Start here to discover courses, build new skills, and learn about the creator community.",
-      },
-      {
-        target: "home-search",
-        title: "Start exploring",
-        description: "This homepage search field is not connected yet. Use Courses or Creators in the navigation to browse and search.",
-      },
-      {
-        target: "site-navigation",
-        title: "Find your way around",
-        description: "Use Courses to browse the catalog or Creators to explore instructor profiles.",
-      },
-      {
-        target: "course-categories",
-        title: "Explore by category",
-        description: "Choose a category to narrow the featured courses to a subject you like.",
-      },
-      {
-        target: "course-result",
-        title: "Course cards at a glance",
-        description: "Compare the course level, rating, and price. Open a course card to see its details.",
-      },
-      {
-        target: "learning-paths",
-        title: "Explore learning paths",
-        description: "Browse the subject tiles for more learning areas and inspiration.",
-      },
-      {
-        target: "growth-overview",
-        title: "Grow your skills",
-        description: "See how ByteSpace helps learners make progress and explore new professional opportunities.",
-      },
-      {
-        target: "creator-tools",
-        title: "Tools for course creators",
-        description: "This section highlights ways creators can share expertise, build a community, and manage courses.",
-      },
-      {
-        target: "creator-call-to-action",
-        title: "Creator call to action",
-        description: "This section introduces the creator opportunity. The Join as Creator button is not connected yet.",
-      },
-      {
-        target: "community-stories",
-        title: "Learn from the community",
-        description: "Read learner and creator stories to hear what people value about the ByteSpace experience.",
-      },
-      {
-        target: "testimonial-cards",
-        title: "Community testimonials",
-        description: "Browse individual perspectives from learners and creators in the ByteSpace community.",
-      },
-    ],
-  },
-  courses: {
-    id: "courses",
-    steps: [
-      {
-        target: "course-search",
-        title: "Search the catalog",
-        description: "Search by course title, creator, or category.",
-      },
-      {
-        target: "course-filters",
-        title: "Refine your results",
-        description: "Filter by level or category, then sort by price or rating.",
-      },
-      {
-        target: "course-categories",
-        title: "Browse a subject",
-        description: "Use the category buttons to quickly focus on a learning area.",
-      },
-      {
-        target: "course-result",
-        title: "Compare courses",
-        description: "Course cards summarize the level, rating, and price. Select View Course for the full overview.",
-      },
-    ],
-  },
-  creators: {
-    id: "creators",
-    steps: [
-      {
-        target: "creator-search",
-        title: "Search creators",
-        description: "Find an instructor by name, role, or bio.",
-      },
-      {
-        target: "creator-result",
-        title: "Meet a creator",
-        description: "Creator cards introduce each instructor. Choose View Profile to see their bio and courses.",
-      },
-    ],
-  },
-  courseDetail: {
-    id: "course-detail",
-    steps: [
-      {
-        target: "course-title",
-        title: "Course overview",
-        description: "Start with the course name and creator to confirm you are viewing the right course.",
-      },
-      {
-        target: "course-pricing",
-        title: "Review the course details",
-        description: "Check the listed price and course length before deciding whether it suits you.",
-      },
-      {
-        target: "course-tabs",
-        title: "Explore the content",
-        description: "Switch between About, Lessons, and Reviews to learn more about the course.",
-      },
-    ],
-  },
-  creatorProfile: {
-    id: "creator-profile",
-    steps: [
-      {
-        target: "creator-overview",
-        title: "Creator profile",
-        description: "Read the creator's role and bio to learn about their background and focus.",
-      },
-      {
-        target: "course-categories",
-        title: "Browse their courses",
-        description: "Filter this creator's courses by subject.",
-      },
-      {
-        target: "course-result",
-        title: "Creator's course collection",
-        description: "Only courses attributed to this creator are shown here. Open a course card to see its details.",
-      },
-    ],
-  },
-  account: {
-    id: "account",
-    steps: [
-      {
-        target: "auth-details",
-        title: "Your account details",
-        description: "Enter your information in the labeled fields whenever you are ready to sign in or register.",
-      },
-      {
-        target: "auth-switch",
-        title: "Switch account pages",
-        description: "Use this link to move between the sign-in and registration pages.",
-      },
-    ],
-  },
+  home: createTutorial("home", [
+    "home-heading", "home-search", "site-navigation", "course-categories",
+    "course-result", "learning-paths", "growth-overview", "creator-tools",
+    "creator-call-to-action", "community-stories", "testimonial-cards",
+  ], tutorialGuideText.home.steps),
+  courses: createTutorial("courses", [
+    "course-search", "course-filters", "course-categories", "course-result",
+  ], tutorialGuideText.courses.steps),
+  creators: createTutorial("creators", [
+    "creator-search", "creator-result",
+  ], tutorialGuideText.creators.steps),
+  courseDetail: createTutorial("course-detail", [
+    "course-title", "course-pricing", "course-tabs",
+  ], tutorialGuideText.courseDetail.steps),
+  creatorProfile: createTutorial("creator-profile", [
+    "creator-overview", "course-categories", "course-result",
+  ], tutorialGuideText.creatorProfile.steps),
+  account: createTutorial("account", [
+    "auth-details", "auth-switch",
+  ], tutorialGuideText.account.steps),
 };
 
 function getTutorialForPath(pathname: string): Tutorial | undefined {
@@ -195,7 +68,7 @@ function getTutorialForPath(pathname: string): Tutorial | undefined {
 }
 
 function tutorialStorageError() {
-  return "Your browser blocked tutorial preferences. You can still use the tutorial during this visit.";
+  return tutorialGuideText.storageError;
 }
 
 export default function TutorialGuide() {
@@ -230,7 +103,7 @@ export default function TutorialGuide() {
         if (Array.isArray(parsedTutorials) && parsedTutorials.every((tutorialId) => typeof tutorialId === "string")) {
           loadedTutorialIds = parsedTutorials;
         } else {
-          notice = "Saved tutorial history was invalid and has been ignored.";
+          notice = tutorialGuideText.invalidHistory;
         }
       }
     } catch {
@@ -433,7 +306,7 @@ export default function TutorialGuide() {
           onClick={() => startTutorial()}
           className="fixed bottom-4 right-4 z-[50] rounded-full bg-[#c8ff16] px-5 py-3 text-sm font-semibold text-[#111827] shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#003AE2] focus:ring-offset-2"
         >
-          Take a tour
+          {tutorialGuideText.launcher}
         </button>
       )}
 
@@ -452,12 +325,12 @@ export default function TutorialGuide() {
             onKeyDown={handleConsentKeyDown}
             className="pointer-events-auto w-[min(400px,calc(100vw-2rem))] rounded-2xl border border-[#e5e7eb] bg-white p-6 shadow-[0_12px_40px_rgba(17,24,39,0.18)] sm:p-8"
           >
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0757df]">ByteSpace guide</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0757df]">{tutorialGuideText.consent.eyebrow}</p>
             <h2 id="tutorial-consent-title" className="mt-2 text-2xl font-semibold text-[#111827]">
-              Would you like a guided tour?
+            {tutorialGuideText.consent.heading}
             </h2>
             <p className="mt-3 text-sm leading-6 text-[#6f7682]">
-              Short tips can show you how to explore courses and creators. The page may scroll to highlight useful areas. Tours are optional, and you can skip one at any time.
+              {tutorialGuideText.consent.description}
             </p>
             <div className="mt-6 flex flex-wrap justify-end gap-3">
               <button
@@ -465,7 +338,7 @@ export default function TutorialGuide() {
                 onClick={() => savePreference("declined")}
                 className="rounded-full border border-[#d7dce2] px-5 py-3 text-sm font-medium text-[#4b4b4b] hover:bg-[#f5f5f6]"
               >
-                No thanks
+                {tutorialGuideText.consent.decline}
               </button>
               <button
                 ref={acceptButtonRef}
@@ -473,7 +346,7 @@ export default function TutorialGuide() {
                 onClick={() => savePreference("accepted")}
                 className="rounded-full bg-[#c8ff16] px-5 py-3 text-sm font-semibold text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#003AE2] focus:ring-offset-2"
               >
-                Yes, show me around
+                {tutorialGuideText.consent.accept}
               </button>
             </div>
           </section>
@@ -504,7 +377,7 @@ export default function TutorialGuide() {
             style={panelStyle}
           >
             <p className="text-[11px] font-semibold uppercase tracking-wide text-[#0757df]">
-              {visibleTutorial.id.replaceAll("-", " ")} · Step {stepIndex + 1} of {steps.length}
+              {visibleTutorial.id.replaceAll("-", " ")} · {tutorialGuideText.stepLabel} {stepIndex + 1} of {steps.length}
             </p>
             <h2 id="tutorial-step-title" className="mt-2 text-xl font-semibold text-[#111827]">
               {currentStep.title}
@@ -518,7 +391,7 @@ export default function TutorialGuide() {
                 onClick={finishTutorial}
                 className="text-sm text-[#6f7682] underline underline-offset-2 hover:text-[#111827]"
               >
-                Skip tour
+                {tutorialGuideText.skip}
               </button>
               <div className="flex gap-2">
                 {stepIndex > 0 && (
@@ -527,7 +400,7 @@ export default function TutorialGuide() {
                     onClick={moveToPreviousStep}
                     className="rounded-full border border-[#d7dce2] px-4 py-2 text-sm font-medium text-[#333333] hover:bg-[#f5f5f6]"
                   >
-                    Back
+                    {tutorialGuideText.back}
                   </button>
                 )}
                 <button
@@ -536,7 +409,7 @@ export default function TutorialGuide() {
                   onClick={advanceStep}
                   className="rounded-full bg-[#c8ff16] px-4 py-2 text-sm font-semibold text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#003AE2] focus:ring-offset-2"
                 >
-                  {stepIndex + 1 === steps.length ? "Finish" : "Next"}
+                  {stepIndex + 1 === steps.length ? tutorialGuideText.finish : tutorialGuideText.next}
                 </button>
               </div>
             </div>

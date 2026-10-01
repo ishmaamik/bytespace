@@ -1,6 +1,7 @@
 import CoursePage from "../../components/coursePage";
-import { categories } from "../../common/courseCategories";
+import { courseCategories } from "../../common/text-files/courseCategories";
 import { courseDetails } from "../../common/courseDetails";
+import { coursePageText } from "../../components/text-files/coursePage";
 
 export default function CourseListingPage() {
   return (
@@ -8,9 +9,9 @@ export default function CourseListingPage() {
       <CoursePage
         courses={courseDetails}
         showSearch
-        searchTitle="Find Your Next Course"
+        searchTitle={coursePageText.searchTitle}
         showCategoryFilters
-        categoryOptions={categories}
+        categoryOptions={courseCategories}
         showFilters
         showPagination
         coursesPerPage={6}

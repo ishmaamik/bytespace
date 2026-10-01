@@ -1,10 +1,4 @@
-export type LearningItem = {
-  imageSrc: string;
-  imageAlt: string;
-  text: string;
-};
-
-export const learningList: LearningItem[] = [
+export const learningPaths = [
   { imageSrc: "/learn/learn1.png", imageAlt: "Design icon", text: "Design" },
   { imageSrc: "/learn/learn2.png", imageAlt: "Development icon", text: "Development" },
   { imageSrc: "/learn/learn3.png", imageAlt: "IT and Software icon", text: "IT & Software" },

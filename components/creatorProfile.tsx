@@ -1,8 +1,9 @@
 import Image from "next/image";
 import CoursePage from "./coursePage";
 import { courseDetails } from "../common/courseDetails";
-import { categories } from "../common/courseCategories";
+import { courseCategories } from "../common/text-files/courseCategories";
 import type { Creator } from "../common/creatorDetails";
+import { creatorProfileText } from "./text-files/creatorProfile";
 
 function normalizeCreatorName(name: string) {
   return name.toLowerCase().replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
@@ -29,7 +30,7 @@ export default function CreatorProfile({ creator }: { creator: Creator }) {
                 <p className="mt-1 text-sm text-white/80">{creator.role}</p>
               </div>
             </div>
-            <button type="button" className="w-fit rounded-full bg-[#c8ff16] px-6 py-3 text-sm font-medium text-[#111827] transition-transform hover:scale-105">Follow</button>
+            <button type="button" className="w-fit rounded-full bg-[#c8ff16] px-6 py-3 text-sm font-medium text-[#111827] transition-transform hover:scale-105">{creatorProfileText.follow}</button>
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-6 text-white/85">{creator.bio}</p>
           <div className="mt-7 flex flex-wrap gap-3 text-xs text-[#111827]">
@@ -39,7 +40,7 @@ export default function CreatorProfile({ creator }: { creator: Creator }) {
         </div>
       </section>
 
-      <CoursePage courses={creatorCourses} showCategoryFilters categoryOptions={categories} showPagination coursesPerPage={6} />
+      <CoursePage courses={creatorCourses} showCategoryFilters categoryOptions={courseCategories} showPagination coursesPerPage={6} />
     </main>
   );
 }

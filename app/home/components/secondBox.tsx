@@ -1,40 +1,39 @@
 
 import CoursePage from "../../../components/coursePage";
 import { courseDetails } from "../../../common/courseDetails";
-import { categories } from "../../../common/courseCategories"
-import LearningBox from "../../../components/learningBox";
+import { courseCategories } from "../../../common/text-files/courseCategories"
+import LearningBox from "./learningBox";
+import { courseDiscovery } from "../text-files/secondBox";
 
 export default function SecondBox() {
     return (
         <>
             <div className="relative z-10 flex flex-col items-center gap-6 px-6 lg:pt-24 pt-16">
                 <h1 className="text-center text-4xl font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
-                    Discover Your Passion,<br />
-                    Build Your Skills
+                    {courseDiscovery.heading[0]}<br />
+                    {courseDiscovery.heading[1]}
                 </h1>
 
                 <h2 className="max-w-6xl text-center font-normal leading-relaxed text-[#82868E] sm:text-lg">
-                    At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different <br />
-                    fields, from technology to the arts, and make a difference in your career and life.
+                    {courseDiscovery.description}
                 </h2>
             </div>
 
             <CoursePage
                 courses={courseDetails}
                 showCategoryFilters
-                categoryOptions={categories}
+                categoryOptions={courseCategories}
                 coursesPerPage={6}
                 showPagination
             />
 
             <div className="relative z-10 flex flex-col items-center gap-6 px-6 lg:pt-16 pt-16">
                 <h2 className="text-center font-bold leading-tight text-black sm:text-5xl lg:text-4xl">
-                    Explore Diverse Learning Paths at Bytespace
+                    {courseDiscovery.learningPathsHeading}
                 </h2>
 
                 <h2 className="max-w-6xl text-center font-normal leading-relaxed text-[#82868E] sm:text-lg">
-                    At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various <br />
-                    fields, ensuring there&apos;s something for everyone. Unleash your potential and explore our carefully curated categories.
+                    {courseDiscovery.learningPathsDescription}
                 </h2>
             </div>
 

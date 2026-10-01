@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Creator } from "../common/creatorDetails";
+import { creatorCardText } from "./text-files/creatorCard";
 
 export default function CreatorCard({
   creator,
@@ -17,7 +18,7 @@ export default function CreatorCard({
         <p className="mt-1 text-xs leading-5 text-[#6f7682]">{creator.role}</p>
       </div>
       <Link href={`/creators/${creator.id}`} className="mt-5 rounded-full bg-[#c8ff16] px-5 py-2 text-xs font-medium text-[#111827] transition-transform hover:scale-105">
-        View Profile
+        {creatorCardText.profileLink}
       </Link>
     </article>
   );

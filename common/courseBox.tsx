@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { courseBoxText } from "./text-files/courseBox";
 
 type CourseProps = {
     id: string;
@@ -27,9 +28,9 @@ export default function CourseBox({
     friendly,
     boughtBy,
     price,
-    lessons = "17 Lessons",
-    duration = "2 hours 16 mins",
-    comments = "59 Comments",
+    lessons = courseBoxText.defaultLessons,
+    duration = courseBoxText.defaultDuration,
+    comments = courseBoxText.defaultComments,
     tutorialTarget,
 }: CourseProps) {
     return (
@@ -54,12 +55,12 @@ export default function CourseBox({
                     <div className="min-w-0">
                         <h3 className="truncate text-[20px] font-semibold leading-6 text-[#111111]">{title}</h3>
                         <p className="pt-1 text-xs text-[#777777]">
-                            by <span className="text-[#7556e8]">{byWhom}</span>
+                            {courseBoxText.creatorPrefix} <span className="text-[#7556e8]">{byWhom}</span>
                         </p>
                     </div>
                     <div className="flex shrink-0 items-center gap-1 text-sm text-[#555555]">
                         <span>{rating}</span>
-                        <Image src={ratingLogo} alt="Rating" width={20} height={20} />
+                        <Image src={ratingLogo} alt={courseBoxText.ratingAlt} width={20} height={20} />
                     </div>
                 </div>
 
@@ -89,9 +90,9 @@ export default function CourseBox({
                 </div>
 
                 <div className="flex items-end justify-between gap-3 pt-4">
-                    <p className="text-[20px] font-semibold text-[#0757df]">{price}<span className="ml-1 text-xs font-normal text-[#777777]">/lifetime</span></p>
+                    <p className="text-[20px] font-semibold text-[#0757df]">{price}<span className="ml-1 text-xs font-normal text-[#777777]">{courseBoxText.lifetimePrice}</span></p>
                     <Link href={`/course/${id}`} className="rounded-full bg-[#c8ff16] px-3 py-2 text-xs font-medium text-[#111827] transition-transform hover:scale-105">
-                        View Course
+                        {courseBoxText.viewCourse}
                     </Link>
                 </div>
             </div>
