@@ -64,12 +64,12 @@
 }
 
 .auth-right {
-  opacity: 1;
+  opacity: 0;
 }
 
 @media (min-width: 1024px) {
   .auth-right {
-    opacity: 0;
+    opacity: 1;
     animation: hero-slide-in-right 1.5s
       cubic-bezier(0.22, 1, 0.36, 1)
       forwards;
@@ -78,7 +78,7 @@
 }
 
 .auth-left {
-	opacity: 0;
+	opacity: 1;
 	animation: hero-slide-in-left 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 	will-change: opacity, transform;
 }
@@ -122,35 +122,37 @@
 	}
 }
 
-
 .hero-card {
-  opacity: 0;
+  opacity: 1;
   will-change: opacity, transform;
 }
 
 .hero-bottom-cards {
-  opacity: 0;
+  opacity: 1;
   will-change: opacity, transform;
 }
 
+@media (min-width: 1024px) {
+  .animate-fifth-box .hero-card {
+    opacity: 0;
+    animation: hero-slide-in-left 3s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      forwards;
+  }
 
-.animate-fifth-box .hero-card {
-  animation: hero-slide-in-left 3s
-    cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
-}
-
-.animate-fifth-box .hero-bottom-cards {
-  animation: hero-bottom-slide-in 1.5s
-    cubic-bezier(0.22, 1, 0.36, 1)
-    360ms
-    forwards;
+  .animate-fifth-box .hero-bottom-cards {
+    opacity: 0;
+    animation: hero-bottom-slide-in 1.5s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      360ms
+      forwards;
+  }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(100px);
   }
 
   to {

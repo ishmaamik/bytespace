@@ -73,18 +73,35 @@ export default function CoursePage({
 		: filteredCourses.slice(0, coursesPerPage);
 
 	function updateLevel(nextLevel: string) {
-		setLevel(nextLevel);
-		setCurrentPage(1);
+		transitionGrid(() => {
+			setLevel(nextLevel);
+			setCurrentPage(1);
+		});
 	}
 
 	function updateCategory(nextCategory: string) {
-		setCategory(nextCategory);
-		setCurrentPage(1);
+		transitionGrid(() => {
+			setCategory(nextCategory);
+			setCurrentPage(1);
+		});
 	}
 
 	function updateSort(nextSort: string) {
-		setSortBy(nextSort);
-		setCurrentPage(1);
+		transitionGrid(() => {
+			setSortBy(nextSort);
+			setCurrentPage(1);
+		});
+	}
+
+	function transitionGrid(update: () => void) {
+		if (pageTransition !== "idle") return;
+
+		setPageTransition("exit-left");
+		window.setTimeout(() => {
+			update();
+			setPageTransition("enter-right");
+			window.setTimeout(() => setPageTransition("idle"), 360);
+		}, 300);
 	}
 
 	function changePage(nextPage: number) {
