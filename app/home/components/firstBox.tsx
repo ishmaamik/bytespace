@@ -1,4 +1,5 @@
-import Image from "next/image"
+import "../home.css";
+import Image from "next/image";
 
 export default function FirstBox() {
   return (
@@ -6,49 +7,49 @@ export default function FirstBox() {
       <div className="z-0 relative mx-auto h-full w-full max-w-[1440px] sm:h-[560px] lg:h-full">
 
         <Image
-          className="pointer-events-none absolute top-[477px] left-[233px] hidden w-[175px] lg:block xl:w-[175px]"
+          className="hero-left hero-left-delay-1 pointer-events-none absolute top-[477px] left-[233px] hidden w-[175px] lg:block xl:w-[175px]"
           src="/home/left-white.svg"
           alt=""
           width={175}
           height={175}
         />
         <Image
-          className="pointer-events-none absolute left-0 top-[221px] hidden w-[180px] lg:block xl:w-[385px]"
+          className="hero-left hero-left-delay-2 pointer-events-none absolute left-0 top-[221px] hidden w-[180px] lg:block xl:w-[385px]"
           src="/home/left-green.png"
           alt=""
           width={385}
           height={385}
         />
         <Image
-          className="pointer-events-none absolute right-[146px] top-[464px] hidden w-[150px] lg:block xl:w-[188px]"
+          className="hero-right hero-right-delay-3 pointer-events-none absolute right-[146px] top-[464px] hidden w-[150px] lg:block xl:w-[188px]"
           src="/home/right-white.svg"
           alt=""
           width={188}
           height={188}
         />
         <Image
-          className="pointer-events-none absolute -right-30 top-[221px] hidden w-full lg:block xl:w-[370px]"
+          className="hero-right hero-right-delay-4 pointer-events-none absolute -right-30 top-[221px] hidden w-full lg:block xl:w-[370px]"
           src="/home/right-greeny.png"
           alt=""
           width={370}
           height={370}
         />
         <Image
-          className="pointer-events-none absolute top-[642px] z-10 left-[18px] hidden w-[250px] lg:block xl:w-[342px]"
+          className="hero-left hero-left-delay-2 pointer-events-none absolute top-[642px] z-10 left-[18px] hidden w-[250px] lg:block xl:w-[342px]"
           src="/home/bottomleft-white.svg"
           alt=""
           width={342}
           height={342}
         />
         <Image
-          className="pointer-events-none absolute top-[603px] -right-[17px] hidden w-[260px] lg:block xl:w-[330px]"
+          className="hero-right hero-right-delay-3 pointer-events-none absolute top-[603px] -right-[17px] hidden w-[260px] lg:block xl:w-[330px]"
           src="/home/bottomright-white.svg"
           alt=""
           width={330}
           height={330}
         />
         <Image
-          className="pointer-events-none absolute top-[582px] left-1/2 w-[1149px] h-[1149px] -translate-x-1/2"
+          className="hero-bottom-ellipse pointer-events-none absolute top-[582px] left-1/2 w-[1149px] h-[1149px] -translate-x-1/2"
           src="/home/bottom-green.png"
           alt=""
           width={1149}
@@ -82,7 +83,7 @@ export default function FirstBox() {
         </div>
       </div>
 
-      <div className="relative z-10 flex justify-center pt-4">
+      <div className="hero-bottom-man relative z-10 flex justify-center pt-4">
         <Image
           src="/home/man-bg.svg"
           alt=""

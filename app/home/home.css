@@ -1,0 +1,101 @@
+@keyframes hero-slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-120px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes hero-slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(+120px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes hero-bottom-slide-in {
+	from {
+		opacity: 0;
+		transform: translate(0%, 240px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0%, 0);
+	}
+}
+
+.hero-left {
+	opacity: 0;
+	animation: hero-slide-in-left 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: opacity, transform;
+}
+
+.hero-left-delay-1 {
+	animation-delay: 120ms;
+}
+
+.hero-left-delay-2 {
+	animation-delay: 240ms;
+}
+
+.hero-left-delay-3 {
+	animation-delay: 360ms;
+}
+
+.hero-left-delay-4 {
+	animation-delay: 480ms;
+}
+
+.hero-right {
+	opacity: 0;
+	animation: hero-slide-in-right 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	will-change: opacity, transform;
+}
+
+.hero-right-delay-1 {
+	animation-delay: 120ms;
+}
+
+.hero-right-delay-2 {
+	animation-delay: 240ms;
+}
+
+.hero-right-delay-3 {
+	animation-delay: 360ms;
+}
+
+.hero-right-delay-4 {
+	animation-delay: 480ms;
+}
+
+.hero-bottom-ellipse {
+	opacity: 0;
+	animation: hero-bottom-slide-in 2.5s cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards;
+	will-change: opacity, transform;
+}
+
+.hero-bottom-man {
+	opacity: 0;
+	animation: hero-bottom-slide-in 2s cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards;
+	will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-left,
+    .hero-right,
+	.hero-bottom-ornament {
+		opacity: 1;
+		animation: none;
+		transform: translateX(-50%);
+	}
+}
