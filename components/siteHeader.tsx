@@ -14,8 +14,8 @@ export default function SiteHeader() {
   }
 
   return (
-    <header className="bg-[#003AE2]">
-      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-6 px-6 py-6 lg:px-12">
+    <header className="bg-[#003AE2] sticky top-0 z-40">
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-wrap items-center lg:justify-between justify-center gap-6 px-6 py-6 lg:px-12">
         <Link href="/home" aria-label="ByteSpace home">
           <Image src="/bytelogo.png" alt="ByteSpace" width={171} height={37} />
         </Link>

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function FirstBox() {
   return (
     <section className="relative overflow-hidden bg-[#003AE2]">
-      <div className="z-0 relative mx-auto h-full w-full max-w-[1440px] sm:h-[560px] lg:h-full">
+      <div className="z-0 relative mx-auto lg:flex lg:h-full w-full max-w-[1440px] hidden lg:h-full">
 
         <Image
           className="hero-left hero-left-delay-1 pointer-events-none absolute top-[477px] left-[233px] hidden w-[175px] lg:block xl:w-[175px]"
@@ -57,7 +57,7 @@ export default function FirstBox() {
         />
       </div>
 
-      <div className="relative z-10 flex justify-center px-6 pt-12 sm:pt-16">
+      <div className="relative z-10 flex justify-center px-6 pt-12 lg:pt-12">
         <h1 className="text-center text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
           Get Access to Hundreds<br />
           Courses Available

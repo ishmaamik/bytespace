@@ -34,11 +34,6 @@
 	}
 }
 
-.hero-card {
-	opacity: 0;
-	animation: hero-slide-in-left 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-	will-change: opacity, transform;
-}
 
 .hero-left {
 	opacity: 0;
@@ -69,9 +64,17 @@
 }
 
 .auth-right {
-	opacity: 0;
-	animation: hero-slide-in-right 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-	will-change: opacity, transform;
+  opacity: 1;
+}
+
+@media (min-width: 1024px) {
+  .auth-right {
+    opacity: 0;
+    animation: hero-slide-in-right 1.5s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      forwards;
+    will-change: opacity, transform;
+  }
 }
 
 .auth-left {
@@ -108,11 +111,6 @@
 	will-change: opacity, transform;
 }
 
-.hero-bottom-cards {
-	opacity: 0;
-	animation: hero-bottom-slide-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards;
-	will-change: opacity, transform;
-}
 
 @media (prefers-reduced-motion: reduce) {
 	.hero-left,
@@ -122,4 +120,41 @@
 		animation: none;
 		transform: translateX(-50%);
 	}
+}
+
+
+.hero-card {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.hero-bottom-cards {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+
+.animate-fifth-box .hero-card {
+  animation: hero-slide-in-left 3s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.animate-fifth-box .hero-bottom-cards {
+  animation: hero-bottom-slide-in 1.5s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    360ms
+    forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

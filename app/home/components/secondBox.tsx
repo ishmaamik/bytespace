@@ -7,7 +7,7 @@ import LearningBox from "../../../components/learningBox";
 export default function SecondBox() {
     return (
         <>
-            <div className="relative z-10 flex flex-col items-center gap-6 px-6 pt-72 sm:pt-16">
+            <div className="relative z-10 flex flex-col items-center gap-6 px-6 lg:pt-24 pt-16">
                 <h1 className="text-center text-4xl font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
                     Discover Your Passion,<br />
                     Build Your Skills
@@ -24,9 +24,10 @@ export default function SecondBox() {
                 showCategoryFilters
                 categoryOptions={categories}
                 coursesPerPage={6}
+                showPagination
             />
 
-            <div className="relative z-10 flex flex-col items-center gap-6 px-6 pt-72 sm:pt-16">
+            <div className="relative z-10 flex flex-col items-center gap-6 px-6 lg:pt-16 pt-16">
                 <h2 className="text-center font-bold leading-tight text-black sm:text-5xl lg:text-4xl">
                     Explore Diverse Learning Paths at Bytespace
                 </h2>

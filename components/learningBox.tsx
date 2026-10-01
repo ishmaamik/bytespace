@@ -3,7 +3,7 @@ import { learningList } from "../common/learningList";
 
 export default function LearningBox() {
 	return (
-		<section className="w-full bg-white px-6 pb-[120px]">
+		<section className="w-full bg-white px-6 lg:pb-[120px] pb-8">
 			<div className="mx-auto max-w-5xl text-center">
 
 				<div className="mt-12 grid grid-cols-2 justify-items-center gap-5 sm:grid-cols-3 lg:grid-cols-6">

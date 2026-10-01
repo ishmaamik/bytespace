@@ -1,5 +1,8 @@
+"use client"
 import Image from "next/image";
 import TestimonialCard from "../../../components/testimonialCard";
+import {useEffect, useState, useRef} from "react"
+
 const testimonials = [
   {
     avatar: "/testimonials/test1.svg",
@@ -22,8 +25,36 @@ const testimonials = [
 ];
 
 export default function FifthBox() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative isolate overflow-hidden bg-[#f8fbff]">
+    <section
+      ref={sectionRef}
+      className={`relative isolate overflow-hidden bg-[#f8fbff] ${
+        isVisible ? "animate-fifth-box" : ""
+      }`}
+    >
       <Image src="/TestimonialBg.png" alt="" fill className="pointer-events-none -z-10 object-cover object-center" />
 
       <div className="hero-card mx-auto max-w-[1280px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
