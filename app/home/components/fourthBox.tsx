@@ -14,7 +14,7 @@ export default function FourthBox() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-[720px] flex-col items-center px-6 py-20 text-center sm:py-24">
+      <div className="relative z-10 mx-auto flex max-w-[720px] flex-col items-center px-6 py-20 text-center sm:py-24" data-tutorial="creator-call-to-action">
         <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
           Unlock Your Potential as a Creator with ByteSpace
         </h1>

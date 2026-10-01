@@ -26,6 +26,7 @@ export default function CreatorsPage({ creators }: { creators: Creator[] }) {
               onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Search creators"
               className="h-12 w-full rounded-full bg-white pl-12 pr-4 text-sm text-[#222222] outline-none"
+              data-tutorial="creator-search"
             />
           </div>
         </div>
@@ -34,7 +35,13 @@ export default function CreatorsPage({ creators }: { creators: Creator[] }) {
       <section className="px-6 py-12 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-[1180px]">
           <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleCreators.map((creator) => <CreatorCard key={creator.id} creator={creator} />)}
+            {visibleCreators.map((creator, index) => (
+              <CreatorCard
+                key={creator.id}
+                creator={creator}
+                tutorialTarget={index === 0 ? "creator-result" : undefined}
+              />
+            ))}
           </div>
           {visibleCreators.length === 0 && <p className="py-16 text-center text-sm text-[#6f7682]">No creators found.</p>}
         </div>

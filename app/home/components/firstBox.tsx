@@ -58,7 +58,7 @@ export default function FirstBox() {
       </div>
 
       <div className="relative z-10 flex justify-center px-6 pt-12 lg:pt-12">
-        <h1 className="text-center text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+        <h1 data-tutorial="home-heading" className="text-center text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
           Get Access to Hundreds<br />
           Courses Available
         </h1>
@@ -67,7 +67,7 @@ export default function FirstBox() {
       <p className="relative z-10 mx-auto max-w-2xl px-6 pt-8 text-center text-sm text-white sm:text-base">Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.</p>
 
       <div className="relative z-10 flex justify-center px-6 pt-12 sm:pt-16">
-        <div className="relative w-full max-w-[461px]">
+        <div className="relative w-full max-w-[461px]" data-tutorial="home-search">
           <Image
             className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2"
             src="/icons/search.svg"

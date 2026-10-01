@@ -14,6 +14,7 @@ type CourseProps = {
     lessons?: string;
     duration?: string;
     comments?: string;
+    tutorialTarget?: string;
 };
 
 export default function CourseBox({
@@ -29,9 +30,10 @@ export default function CourseBox({
     lessons = "17 Lessons",
     duration = "2 hours 16 mins",
     comments = "59 Comments",
+    tutorialTarget,
 }: CourseProps) {
     return (
-        <article className="w-full max-w-[373px] rounded-[22px] border border-[#d7d7d7] bg-white p-[14px] shadow-[0_8px_24px_rgba(25,35,52,0.08)]">
+        <article data-tutorial={tutorialTarget} className="w-full max-w-[373px] rounded-[22px] border border-[#d7d7d7] bg-white p-[14px] shadow-[0_8px_24px_rgba(25,35,52,0.08)]">
             <div className="relative overflow-hidden rounded-[13px]">
                 <Image
                     src={imageSrc}

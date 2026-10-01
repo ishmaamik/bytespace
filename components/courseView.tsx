@@ -55,7 +55,7 @@ export default function CourseView({ course }: CourseViewProps) {
                 <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-[760px] bg-[#003AE2] sm:h-[620px] lg:h-[770px]" />
                 <div className="relative z-10 mx-auto max-w-[1180px]">
 
-                    <h1 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl">{course.title}</h1>
+                    <h1 data-tutorial="course-title" className="mt-5 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl">{course.title}</h1>
                     {course.tagline && (
                         <h2 className="mt-1 max-w-3xl text-xl font-semibold leading-tight sm:text-xl">
                             {course.tagline}
@@ -84,7 +84,7 @@ export default function CourseView({ course }: CourseViewProps) {
                             </div>
                             <p className="mt-5 text-xs text-[#777777]">99 more videos</p>
                             <p className="mt-6 text-xs leading-5 text-[#777777]">Ready to Dive In? Enroll Now and Start Building Your Digital Future!</p>
-                            <p className="mt-5 text-3xl font-semibold text-[#0757df]">{course.price}<span className="text-sm font-normal text-[#777777]">/lifetime</span></p>
+                            <p data-tutorial="course-pricing" className="mt-5 text-3xl font-semibold text-[#0757df]">{course.price}<span className="text-sm font-normal text-[#777777]">/lifetime</span></p>
                             <button type="button" className="mt-5 w-full rounded-full bg-[#c8ff16] px-5 py-3 text-sm font-medium text-[#111827]">Enroll Now</button>
 
                             <h3 className="mt-6 text-sm font-semibold">This course includes</h3>
@@ -112,7 +112,7 @@ export default function CourseView({ course }: CourseViewProps) {
             </section>
 
             <div className="relative z-10 mx-auto max-w-[1180px] px-0 py-10 sm:px-10 lg:px-0">
-                <nav className="flex flex-wrap gap-3" aria-label="Course details">
+                <nav className="flex flex-wrap gap-3" aria-label="Course details" data-tutorial="course-tabs">
                     {(["about", "lessons", "reviews"] as Tab[]).map((tab) => (
                         <button
                             key={tab}

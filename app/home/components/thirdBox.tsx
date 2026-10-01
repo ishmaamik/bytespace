@@ -14,7 +14,7 @@ export default function ThirdBox() {
 
       <div className="mx-auto max-w-[1440px] lg:px-16 lg:py-8 py-12">
         <div className="grid lg:text-left text-center items-center lg:justify-left justify-center gap-12 lg:grid-cols-[minmax(577px,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-          <div className="max-w-[577px] ">
+          <div className="max-w-[577px] " data-tutorial="growth-overview">
             <h2 className="max-w-[577px] text-4xl font-semibold leading-[1.08] text-[#111827] sm:text-5xl">
               <span className="block lg:whitespace-nowrap">Your Path to Professional</span>
               <span className="block">Growth Starts Here!</span>
@@ -46,7 +46,7 @@ export default function ThirdBox() {
             <Image src="/customercare4.png" alt="Growth accent" width={217} height={216} className="lg:flex hidden absolute top-0 right-[100px] z-12 w-[min(25vw,217px)]" />
           </div>
 
-          <div className="max-w-[520px] lg:pb-16 sm: lg:text-left text-center">
+          <div className="max-w-[520px] lg:pb-16 sm: lg:text-left text-center" data-tutorial="creator-tools">
             <h2 className="text-4xl font-semibold leading-[1.08] text-[#111827] sm:text-5xl">Create &amp; Manage Courses Easily.</h2>
             <p className="mt-7 text-sm leading-6 text-[#6f7682]">ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.</p>
             <div className="mt-8 space-y-4">

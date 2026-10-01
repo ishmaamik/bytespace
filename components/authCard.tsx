@@ -16,7 +16,7 @@ export default function AuthCard({ mode }: AuthCardProps) {
         {isRegister ? "Welcome to ByteSpace" : "Welcome Back"}
       </h1>
 
-      <form className="mt-12 space-y-7" onSubmit={(event) => event.preventDefault()}>
+      <form className="mt-12 space-y-7" onSubmit={(event) => event.preventDefault()} data-tutorial="auth-details">
         {isRegister && (
           <div>
             <label className="mb-2 block text-sm text-[#555555]" htmlFor="full-name">Full Name</label>
@@ -52,7 +52,7 @@ export default function AuthCard({ mode }: AuthCardProps) {
 
       <p className="mt-8 text-center text-sm text-[#777777]">
         {isRegister ? "Already have an account? " : "New user? "}
-        <a href={isRegister ? "/login" : "/register"} className="text-[#0757df] hover:underline">
+        <a href={isRegister ? "/login" : "/register"} className="text-[#0757df] hover:underline" data-tutorial="auth-switch">
           {isRegister ? "Login" : "Create an account"}
         </a>
       </p>

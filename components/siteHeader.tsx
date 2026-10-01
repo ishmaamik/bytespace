@@ -20,13 +20,13 @@ export default function SiteHeader() {
           <Image src="/bytelogo.png" alt="ByteSpace" width={171} height={37} />
         </Link>
 
-        <nav className="flex gap-5 sm:gap-8" aria-label="Main navigation">
+        <nav className="flex gap-5 sm:gap-8" aria-label="Main navigation" data-tutorial="site-navigation">
           <Link href="/home" className="text-white">Home</Link>
           <Link href="/course" className="text-white">Courses</Link>
           <Link href="/creators" className="text-white">Creators</Link>
         </nav>
 
-        <div className="flex items-center gap-5 sm:gap-8">
+        <div className="flex items-center gap-5 sm:gap-8" data-tutorial="account-links">
           <Link href="/login" className="text-white">Sign In</Link>
           <Link href="/register" className="text-white">Sign Up</Link>
           <Image src="/bag.png" alt="Shopping bag" width={24} height={24} />
